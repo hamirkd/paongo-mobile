@@ -7,7 +7,12 @@ export default class Login extends React.Component {
         email: "",
         password: ""
     }
+    goToRegister(){
+        this.props.navigation.navigate("Register")
+        // this.props.navigation.push('Register')
+    }
     render() {
+        
         return (
             <View style={styles.container}>
                 
@@ -32,7 +37,7 @@ export default class Login extends React.Component {
                         placeholderTextColor="#003f5c"
                         onChangeText={text => this.setState({ password: text })} />
                 </View>
-                <TouchableOpacity style={styles.loginBtn}>
+                <TouchableOpacity style={styles.loginBtn} onPress={() => this.goToRegister()}>
                     <Text style={styles.loginText}>SE CONNECTER</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>

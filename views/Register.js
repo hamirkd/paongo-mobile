@@ -3,11 +3,16 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'reac
 import logo from '../images/logobtc.png';
 
 export default class Register extends React.Component {
+    
+    onPress(){
+        
+    }
     state = {
         email: "",
         password: ""
     }
     render() {
+        console.log(this.props)
         return (
             <View style={styles.container}>
                 
@@ -62,13 +67,7 @@ export default class Register extends React.Component {
                         onChangeText={text => this.setState({ password: text })} />
                 </View>
                 <TouchableOpacity style={styles.loginBtn}>
-                    <Text style={styles.loginText}>SE CONNECTER</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.registerText}>Je n'ai pas de compte</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.forgot}>Mot de passe oublié?</Text>
+                    <Text style={styles.loginText}>VALIDER</Text>
                 </TouchableOpacity>
 
 
@@ -104,9 +103,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderRadius: 25,
         height: 50,
-        marginBottom: 20,
+        marginBottom: 10,
         justifyContent: "center",
-        padding: 20
+        padding: 10
     },
     inputText: {
         height: 50,

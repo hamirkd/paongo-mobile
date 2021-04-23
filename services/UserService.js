@@ -1,5 +1,5 @@
 export default function login(login, password) {
-    const url = 'http://v2.api.paongo-trading.com/api/auth/login';
+    const url = 'https://v2.api.paongo-trading.com/api/auth/login';
     return fetch(url, {
         method: 'POST',
         headers: {

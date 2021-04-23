@@ -5,22 +5,25 @@ import Login from './views/Login';
 import Register from './views/Register';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SafeAreaView from 'react-native-safe-area-view';
+import Home from './views/Home';
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
 
 export default function App() {
   const someData=[];
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        {/* <Stack.Screen name="Login" component={Login}
-          options={{ title: 'Login' }} /> */}
-        <Stack.Screen name="Login">
-          {props => <Login {...props} extraData={someData} />}
-        </Stack.Screen>
-        <Stack.Screen name="Register" component={Register} />
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 

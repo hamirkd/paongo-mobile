@@ -1,29 +1,55 @@
+// import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import logo from '../images/logobtc.png';
+import login from '../services/UserService';
 
 export default class Login extends React.Component {
     state = {
         email: "",
         password: ""
     }
-    goToRegister(){
+    goToRegister() {
         this.props.navigation.navigate("Register")
         // this.props.navigation.push('Register')
     }
-    render() {
+    goToHome() {
+        this.props.navigation.navigate("Home")
         
+    }
+    authentification() {
+        console.log(this.state);
+        login(this.state.email, this.state.password).then(data => {
+            console.log('Donnees => ',data);
+            switch (data.error) {
+                case 'Unauthorized':
+                    alert('Connexion impossible')
+                    break;
+            
+                default:
+                    alert('Vous êtes connecté');
+                    this.props.navigation.navigate("Home")
+                    break;
+            }
+            
+        }).catch(err=>{
+            console.log(err); alert(err.message) 
+        })
+    }
+    render() {
+
         return (
             <View style={styles.container}>
-                
+
                 <Image
                     style={styles.logoImg}
                     source={logo}
                 />
-                
+
                 {/* <Text style={styles.logo}>Club Paongo</Text> */}
                 <View style={styles.inputView} >
                     <TextInput
+                        autoCapitalize="none"
                         style={styles.inputText}
                         placeholder="Nom d'utilisateur ou E-mail ..."
                         placeholderTextColor="#003f5c"
@@ -37,10 +63,10 @@ export default class Login extends React.Component {
                         placeholderTextColor="#003f5c"
                         onChangeText={text => this.setState({ password: text })} />
                 </View>
-                <TouchableOpacity style={styles.loginBtn} onPress={() => this.goToRegister()}>
+                <TouchableOpacity style={styles.loginBtn} onPress={() => this.authentification()}>
                     <Text style={styles.loginText}>SE CONNECTER</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => this.goToRegister()}>
                     <Text style={styles.registerText}>Je n'ai pas de compte</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -64,10 +90,10 @@ const styles = StyleSheet.create({
         flex: 0.5,
         width: '50%',
         height: '50%',
-          resizeMode: 'stretch',
-          alignContent:'center',
-        marginBottom:20,
-        marginTop:-20
+        resizeMode: 'stretch',
+        alignContent: 'center',
+        marginBottom: 20,
+        marginTop: -20
     },
     logo: {
         fontWeight: "bold",

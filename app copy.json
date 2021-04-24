@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "imagerotation",
-    "slug": "imagerotation",
+    "name": "PaongoMobile",
+    "slug": "PaongoMobile",
     "platforms": [
       "ios",
       "android",
@@ -23,6 +23,15 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
     }
   }
 }

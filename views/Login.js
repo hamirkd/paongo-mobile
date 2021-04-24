@@ -15,25 +15,30 @@ export default class Login extends React.Component {
     }
     goToHome() {
         this.props.navigation.navigate("Home")
-        
+
     }
     authentification() {
         console.log(this.state);
         login(this.state.email, this.state.password).then(data => {
-            console.log('Donnees => ',data);
+            console.log('Donnees => ', data);
             switch (data.error) {
                 case 'Unauthorized':
                     alert('Connexion impossible')
                     break;
-            
+
                 default:
-                    alert('Vous êtes connecté');
-                    this.props.navigation.navigate("Home")
+                    if (data.token) {
+                        alert('Vous êtes connecté');
+                        this.props.navigation.navigate("Home");
+                    }
+                    else{
+                        alert('Connexion impossible')
+                    }
                     break;
             }
-            
-        }).catch(err=>{
-            console.log(err); alert(err.message) 
+
+        }).catch(err => {
+            console.log(err); alert(err.message)
         })
     }
     render() {

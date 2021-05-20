@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import logo from '../images/logobtc.png';
 import login from '../services/UserService';
+import DATA from '../services/UserService';
 
 export default class Login extends React.Component {
     state = {

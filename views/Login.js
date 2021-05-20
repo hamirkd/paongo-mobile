@@ -19,6 +19,8 @@ export default class Login extends React.Component {
     }
     authentification() {
         console.log(this.state);
+        // this.state.email="daohamadou@gmail.com";
+        // this.state.password="123456";
         login(this.state.email, this.state.password).then(data => {
             console.log('Donnees => ', data);
             switch (data.error) {

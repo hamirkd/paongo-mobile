@@ -1,4 +1,4 @@
-export default DATA={user,token};
+// export default DATA={user,token};
 
 export default function login(login, password) {
     const url = 'https://v2.api.paongo-trading.com/api/auth/login';

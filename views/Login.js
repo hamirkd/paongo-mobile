@@ -3,9 +3,14 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import logo from '../images/logobtc.png';
 import login from '../services/UserService';
-import DATA from '../services/UserService';
+// import DATA from '../services/UserService';
 
 export default class Login extends React.Component {
+    constructor(props) {
+        super(props)
+        
+        // this._displayLoading();
+      }
     state = {
         email: "",
         password: ""
@@ -19,9 +24,9 @@ export default class Login extends React.Component {
 
     }
     authentification() {
-        console.log(this.state);
-        // this.state.email="daohamadou@gmail.com";
-        // this.state.password="123456";
+        // console.log(this.state);
+        this.state.email="daohamadou@gmail.com";
+        this.state.password="123456";
         login(this.state.email, this.state.password).then(data => {
             console.log('Donnees => ', data);
             switch (data.error) {
@@ -31,7 +36,8 @@ export default class Login extends React.Component {
 
                 default:
                     if (data.token) {
-                        alert('Vous êtes connecté');
+                        window && window.sessionStorage && sessionStorage.setItem('token',data.token);
+                        // alert('Vous êtes connecté');
                         this.props.navigation.navigate("Home");
                     }
                     else{
@@ -45,7 +51,10 @@ export default class Login extends React.Component {
         })
     }
     render() {
-
+        if(window && window.sessionStorage && sessionStorage.getItem('token')){
+            // alert('Vous êtes connecté');
+                        this.props.navigation.navigate("Home");
+        }
         return (
             <View style={styles.container}>
 

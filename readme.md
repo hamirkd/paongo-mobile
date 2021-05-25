@@ -6,3 +6,6 @@ expo build:web
 npm start
 # DEPLOY
 netlify deploy
+
+# Utiliser l'application directement sur expo
+expo publish

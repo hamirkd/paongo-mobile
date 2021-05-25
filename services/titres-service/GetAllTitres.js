@@ -1,5 +1,5 @@
-export default function findAllTitreOfUser() {
-    const url = 'https://v2.api.paongo-trading.com/api/achats_/getforme';
+  export default function findAllTitres(){
+    const url = 'https://v2.api.paongo-trading.com/api/titres';
     const token =window && window.sessionStorage && sessionStorage.getItem('token');
     return fetch(url, {
         method: 'GET',
@@ -11,9 +11,4 @@ export default function findAllTitreOfUser() {
     })
         .then((response) => response.json())
         .catch((error) => console.error(error))
-}
-
-
-
-
-  
+  }
